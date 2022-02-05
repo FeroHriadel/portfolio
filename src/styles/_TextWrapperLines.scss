@@ -1,0 +1,28 @@
+@use 'variables';
+
+
+
+.lines-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .line-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-bottom: 2px variables.$yellow dotted;
+        opacity: 0.4;
+        
+        .thin-line {
+            width: 100%;
+            height: 1px;
+            background: variables.$yellow;
+            margin-top: 3px;
+            opacity: 0.4;
+        }
+    }
+}

@@ -1,0 +1,200 @@
+@use 'variables';
+
+
+.projects {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .image {
+        position: absolute;
+        animation: imageAnimation 6s forwards;
+        width: 260px;
+    }
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+  
+    &::-webkit-scrollbar-track {
+        background: variables.$dark;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+        background: variables.$bordeaux;
+    }
+
+    .page-title {
+        margin: 8rem 0 4rem 8rem;
+        text-transform: uppercase;
+        font-size: 2.5rem;
+        color: variables.$yellow;
+        font-family: Prompt;
+        letter-spacing: 2px;
+        line-height: 1.2;
+        position: relative;
+
+        .marker {
+            border-right: 1rem variables.$yellow solid;
+            width: 1rem;
+            height: 1.5rem;
+            background-color: variables.$yellow;
+            animation-name: markerBlick;
+            animation-duration: 0.2s;
+            animation-iteration-count: 4;
+        }
+    }
+
+    .page-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 1rem;
+        opacity: 0;
+        animation: projectsAppear 4s 1.5s linear forwards;
+
+        .project-item {
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 8rem;
+            position: relative;
+
+            .project-details {
+                width: 75%;
+                list-style-type: none;
+                padding: 0;
+                padding-right: 8rem;
+                margin-left: 0;
+                color: variables.$yellow;
+                font-size: 1.5rem;
+                font-family: Prompt;
+
+                & > * {
+                    margin-bottom: 0.5rem;
+                }
+
+                .title {
+                    font-size: 1.75rem;
+                    font-weight: bold;
+                }
+
+                .button > * {
+                    height: 1.5rem;
+                    outline: 0;
+                    border: 0;
+                    background: 0;
+                    color: variables.$bordeaux;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    box-shadow: 0;
+                    font-family: Prompt;
+                    transform: translateY(-10px);
+                    transition: 0.3s;
+
+                    &:hover {
+                        color: variables.$red;
+                        text-shadow: 0 0 2px rgba(218, 47, 47, 0.507);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.hilite {
+    color: variables.$bordeaux;
+    font-weight: bold;
+}
+
+
+
+
+@keyframes imageAnimation {
+    0% {opacity: 0;}
+    25% {opacity: 0.01;}
+    75% {opacity: 0.01;}
+    100% {opacity: 0;}
+}
+
+@keyframes markerBlick {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes projectsAppear {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+
+
+@media (max-width: 1300px) {
+    .page-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 1rem;
+        opacity: 0;
+        animation: projectsAppear 4s 1.5s linear forwards;
+
+        .project-item {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+
+            .project-details {
+                width: 75% !important;  
+                padding-right: 2rem !important;
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 800px) {
+    .page-title {
+        margin: 8rem 0 4rem 2rem !important;
+    }
+
+    .page-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        opacity: 0;
+        animation: projectsAppear 4s 1.5s linear forwards;
+
+        .project-item {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+
+            .project-details {
+                width: 100% !important;  
+                padding-right: 1rem !important;
+            }
+        }
+    }
+}

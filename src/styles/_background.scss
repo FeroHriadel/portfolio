@@ -1,0 +1,163 @@
+@use 'variables';
+
+
+
+.background {
+    width: 100vw;
+    height: 100vh;
+    background-color: variables.$dark;
+    position: relative;
+
+    .view {
+        height: 95%;
+        max-height: 800px;
+        width: 95%;
+        max-width: 1000px;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        left: 0%;
+        transform: translate(-50%, -50%);
+        transform: translate(-0%, -50%);
+        overflow: hidden;
+        border: 2px variables.$dark dotted;   
+
+        .image {
+            height: 100%;;
+            width: 1000%;
+            background-color: variables.$dark;
+            background: url('../images/world.jpg');
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation-name: moveImage;
+            animation-timing-function: linear;
+            animation-duration: 120s;
+            animation-iteration-count: infinite;
+
+                .circle {
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 50%;
+                    background: variables.$yellow;
+                    animation-name: dotAppear;
+                    animation-duration: 2s;
+                    animation-fill-mode: forwards;
+                    position: absolute;
+
+                    .inner-circle-1 {
+                        border: 2px solid variables.$yellow;
+                        border-radius: 50%;
+                        animation-name: innerGrow1;
+                        animation-duration: 2s;
+                        animation-fill-mode: forwards;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+
+                    .inner-circle-2 {
+                        border: 2px solid variables.$yellow;
+                        border-radius: 50%;
+                        animation-name: innerGrow2;
+                        animation-duration: 2s;
+                        animation-fill-mode: forwards;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+
+                    .inner-circle-3 {
+                        border: 2px solid variables.$yellow;
+                        border-radius: 50%;
+                        animation-name: innerGrow3;
+                        animation-duration: 2s;
+                        animation-fill-mode: forwards;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                
+            }
+        }
+    }
+
+    .fog {
+        height: 95%;
+        max-height: 800px;
+        width: 95%;
+        max-width: 1000px;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        left: 0%;
+        transform: translate(-50%, -50%);
+        transform: translate(-0%, -50%);
+        box-shadow: inset 0 0 250px 250px variables.$dark, 0 0 20px 20px variables.$dark;
+    }
+}
+
+@keyframes moveImage {
+    from {left: 0;}
+    to {left: -900%}
+}
+
+@keyframes dotAppear {
+    0% {opacity: 0;}
+    50% {opacity: 1}
+    74% {opacity: 1;}
+    75% {opacity: 0;}
+    80% {opacity: 1;}
+    81%{opacity: 0; background: variables.$yellow;}
+    86%{opacity: 1;}
+    90% {opacity: 1;}
+    91% {opacity: 0; background: rgba(255, 0, 0, 0.507);}
+    94% {opacity: 0;}
+    95% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+@keyframes innerGrow1 {
+    0% {width: 0; min-width: 0; height: 0;}
+    25% {width: 20px; min-width: 20px; height: 20px;}
+    100% {opacity: 0;}
+}
+
+@keyframes innerGrow2 {
+    0% {width: 0; min-width: 0; height: 0;}
+    50% {width: 40px; min-width: 40px; height: 40px;}
+    100% {opacity: 0;}
+}
+
+@keyframes innerGrow3 {
+    0% {width: 0; min-width: 0; height: 0;}
+    75% {width: 80px; min-width: 80px; height: 80px;}
+    100% {opacity: 0;}
+}
+
+
+
+@media (max-width: 800px) {
+    .fog {
+        box-shadow: inset 0 0 150px 150px variables.$dark, 0 0 20px 20px variables.$dark !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .view {
+        left: 5%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media (max-width: 576px) {
+    .fog {
+        box-shadow: inset 0 0 75px 75px variables.$dark, 0 0 20px 20px variables.$dark !important;
+    }
+}

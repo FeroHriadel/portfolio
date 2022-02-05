@@ -1,0 +1,39 @@
+@use 'variables';
+
+.navbar {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    li {
+        text-decoration: none;
+        padding-left: 0;
+        margin: 0 1rem 0 1rem;
+        font-family: Prompt;
+        color: variables.$yellow;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s linear;
+
+        &:hover {
+            color: variables.$bordeaux;
+            text-shadow: 0 0 2px rgba(218, 47, 47, 0.507);
+        }
+    }
+}
+
+
+
+@media (max-width: 570px) {
+    .navbar {
+        li {
+            width: auto;
+            font-size: 0.75rem;
+        }
+    }
+}

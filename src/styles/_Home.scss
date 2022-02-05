@@ -1,0 +1,203 @@
+@use 'variables';
+
+
+
+.home {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+    .text-wrapper {
+        position: relative;
+        overflow: hidden;
+        max-width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin-right: 8rem;
+        padding: 1rem;
+        border-top: 2px variables.$yellow dotted;
+        border-bottom: 2px variables.$yellow dotted;
+        animation: expandText 0.6s linear forwards, glitch-1 10s 10s infinite;
+
+        .flash-wrapper {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+
+            .flash {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                left: 0;
+                top: 0;
+                background: linear-gradient(to right, transparent 25%, variables.$yellow);
+                animation-name: flash;
+                animation-timing-function: linear;
+                animation-delay: 0.6s;
+                animation-duration: 2.2s;
+                animation-fill-mode: forwards;
+            }
+        }
+
+        p {
+            font-family: Prompt;
+            font-size: 2rem;
+            color: variables.$yellow;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            animation: noise-1 10s 10.5s linear infinite alternate-reverse;
+            position: relative;
+
+            .marker {
+                border-right: 1rem variables.$yellow solid;
+                width: 1rem;
+                height: 1.5rem;
+                background-color: variables.$yellow;
+                animation-name: markerBlick;
+                animation-duration: 0.2s;
+                animation-iteration-count: 4;
+            }
+        }
+    }
+
+    .menu {
+        margin-top: 1rem;
+        list-style-type: none;
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 8rem;
+        animation-name: showNav;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+
+        li {
+            text-decoration: none;
+            padding-left: 0;
+            margin-left: 1rem;
+            font-family: Prompt;
+            color: variables.$yellow;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s linear;
+
+            &:hover {
+                color: variables.$red;
+                text-shadow: 0 0 2px rgba(218, 47, 47, 0.507);
+            }
+        }
+    }
+}
+
+
+
+@keyframes expandText {
+    from {width: 0%;}
+    to {width: 100%;}
+}
+
+@keyframes flash {
+    from {left: 0;}
+    to {left: 100%;}
+}
+
+
+@keyframes markerBlick {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes showNav {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+// @keyframes shadowAppear {
+//     from {opacity: 0;}
+//     to {opacity: 0.1;}
+// }
+
+@keyframes glitch-1 {
+    1% {transform: rotateX(10deg) skewX(90deg); opacity: 1;}
+    2% {transform: rotateX(0deg) skewX(0deg);}
+    24% {transform: rotateX(0deg) skewX(0deg); opacity: 1;}
+    25% {transform: rotateX(0deg) skewX(0deg); opacity: 0.5;}
+    26% {transform: rotateX(0deg) skewX(0deg); opacity: 1;}
+    27% {transform: rotateX(0deg) skewX(0deg); opacity: 1;}
+    28% {transform: rotateX(-2deg) skewX(2deg); opacity: 0.25;}
+    29% {transform: rotateX(0deg) skewX(0deg); opacity: 1;}
+    49% {transform: rotateX(0deg) skewX(0deg);}
+    50% {transform: rotateX(-10deg) skewX(-20deg);}
+    51% {transform: rotateX(0deg) skewX(0deg);}
+    74% {transform: rotateX(0deg) skewX(0deg); opacity: 1;}
+    75% {transform: rotateX(0deg) skewX(0deg); opacity: 0;}
+    76% {transform: rotateX(0deg) skewX(0deg); opacity: 1;}
+    77% {transform: rotateX(0deg) skewX(0deg); opacity: 1;}
+    78% {transform: rotateX(10deg) skewX(-10deg); opacity: 0.25;}
+    79% {transform: rotateX(0deg) skewX(0deg); opacity: 1;}
+    84% {transform: rotateX(0deg) skewX(0deg); opacity: 1;}
+    85% {transform: rotateX(0deg) skewX(0deg); opacity: 0.5;}
+    87% {transform: rotateX(0deg) skewX(0deg); opacity: 1;}
+}
+
+@keyframes noise-1 {  
+    0% {clip-path: inset(0px 0 0px 0)}
+    1% {clip-path: inset(10px 0 10px 0)}
+    2% {clip-path: inset(0px 0 0px 0)}
+    32% {clip-path: inset(0px 0 0px 0)}
+    33% {clip-path: inset(10px 0 0px 0)}
+    34% {clip-path: inset(0px 0 0px 0)}
+    35% {clip-path: inset(0px 0 10px 0)}
+    36% {clip-path: inset(0px 0 0px 0)}
+    70% {clip-path: inset(0px 0 0px 0)}
+    71% {clip-path: inset(10px 0 15px 0)}
+    72% {clip-path: inset(0px 0 0px 0)}
+    73% {clip-path: inset(15px 0 10px 0)}
+    74% {clip-path: inset(0px 0 0px 0)}
+}
+
+
+
+@media (max-width: 800px) {
+    .home {
+        align-items: center;
+
+        .text-wrapper {
+            margin-right: 1rem;
+            margin-left: 1rem;
+            max-width: 90%;
+            width: 90%;
+        }
+
+        .menu {
+            margin-right: 1rem;
+            margin-left: 1rem;
+            max-width: 90%;
+            width: 90%;
+        }
+    }
+}
+
+// @media (max-width: 576px) {
+//     .home {
+//         .text-wrapper {
+//             p {
+//                 text-align: center;
+//             }
+//         }
+//     }
+// }
